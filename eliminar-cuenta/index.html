@@ -178,25 +178,20 @@
                 <h2>1. Pasos para eliminar tu cuenta</h2>
                 <p>En <strong>Nexum</strong> tienes el control total para eliminar tu cuenta y toda tu información financiera asociada en cualquier momento, mediante cualquiera de estas dos vías:</p>
 
-                <h3>Opción A: Directamente desde la aplicación móvil (Inmediata)</h3>
-                <ol>
-                    <li>Abre la aplicación <strong>Nexum</strong> en tu dispositivo Android e inicia sesión en tu cuenta.</li>
-                    <li>Dirígete a la pestaña <span class="ui-path">Perfil</span> en el menú de navegación.</li>
-                    <li>Selecciona la opción <span class="ui-path">Eliminar cuenta</span>.</li>
-                    <li>Por seguridad, ingresa tu contraseña actual y escribe la palabra <strong>ELIMINAR</strong> para confirmar la operación.</li>
-                </ol>
+                <h3>Opción A: Desde la aplicación móvil</h3>
+                <p>La eliminación automática desde la aplicación aún no está disponible (E014 está pendiente de implementación). Cuando se publique, el flujo solicitará tu contraseña actual y la confirmación <strong>ELIMINAR</strong>. Mientras tanto, usa la Opción B.</p>
 
                 <h3>Opción B: Solicitud vía web / correo electrónico (Si ya desinstalaste la app)</h3>
                 <p>Si ya no tienes instalada la aplicación en tu teléfono, puedes solicitar la baja definitiva de tu cuenta enviando un correo desde la dirección con la que te registraste en Nexum:</p>
                 <ol>
-                    <li>Envía un correo electrónico a <strong>privacidad@nexum.mx</strong> con el asunto: <em>"Solicitud de eliminación de cuenta Nexum"</em>.</li>
+                    <li>Envía un correo electrónico a <strong>nexumproyectomov@gmail.com</strong> con el asunto: <em>"Solicitud de eliminación de cuenta Nexum"</em>.</li>
                     <li>Indica en el mensaje el correo electrónico registrado en tu cuenta para verificar tu titularidad.</li>
-                    <li>Procesaremos tu solicitud y te confirmaremos el borrado definitivo en un plazo máximo de <strong>5 días hábiles</strong>.</li>
+                    <li>Confirmaremos la recepción y el resultado por el mismo correo. No se promete un plazo automático que no esté verificado; los datos no se consideran eliminados hasta que el responsable confirme la ejecución.</li>
                 </ol>
-                <a class="email-btn" href="mailto:privacidad@nexum.mx?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta%20Nexum&body=Hola%2C%20solicito%20la%20eliminaci%C3%B3n%20definitiva%20de%20mi%20cuenta%20de%20Nexum%20asociada%20al%20correo%3A%20">Solicitar eliminación por correo</a>
+                <a class="email-btn" href="mailto:nexumproyectomov@gmail.com?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta%20Nexum&body=Hola%2C%20solicito%20la%20eliminaci%C3%B3n%20definitiva%20de%20mi%20cuenta%20de%20Nexum%20asociada%20al%20correo%3A%20">Solicitar eliminación por correo</a>
 
                 <div class="warn-box">
-                    <strong>Acción irreversible:</strong> Una vez ejecutada la eliminación, no será posible recuperar tu historial de gastos, presupuestos ni metas de ahorro. Si deseas conservar una copia previa, expórtala desde <span class="ui-path">Perfil &gt; Privacidad &gt; Exportar mis datos</span> antes de borrar tu cuenta.
+                    <strong>Acción irreversible:</strong> Una vez ejecutada la eliminación, no será posible recuperar tu historial de gastos, presupuestos ni metas de ahorro. Si deseas conservar una copia previa, puedes solicitarla por el correo de privacidad antes de la eliminación; la exportación automática aún no está disponible.
                 </div>
             </section>
 
@@ -208,34 +203,34 @@
                     <thead>
                         <tr>
                             <th>Categoría de Datos</th>
-                            <th>Acción ejecutada</th>
-                            <th>Plazo de retención</th>
+                            <th>Acción</th>
+                            <th>Plazo / nota</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>Datos de cuenta e identidad</strong><br>(Nombre, correo electrónico y contraseña derivada Argon2id)</td>
-                            <td>Eliminación definitiva de la base de datos productiva.</td>
-                            <td><strong>Inmediato</strong> (0 días en producción).</td>
+                            <td>Supresión de los entornos productivos tras verificar la solicitud.</td>
+                            <td>Se confirma por correo; no se declara una purga automática no verificada.</td>
                         </tr>
                         <tr>
                             <td><strong>Registros financieros autodeclarados</strong><br>(Ingresos, gastos, presupuestos, pagos recurrentes y metas de ahorro)</td>
-                            <td>Eliminación definitiva y desvinculación total.</td>
-                            <td><strong>Inmediato</strong> (0 días en producción).</td>
+                            <td>Supresión y desvinculación tras verificar la solicitud.</td>
+                            <td>Se confirma por correo; no se declara una purga automática no verificada.</td>
                         </tr>
                         <tr>
                             <td><strong>Sesiones y notificaciones</strong><br>(Tokens JWT, refresh tokens y token push del dispositivo)</td>
-                            <td>Revocación y anulación inmediata.</td>
-                            <td><strong>Inmediato</strong> (0 días).</td>
+                            <td>Revocación de sesiones activas.</td>
+                            <td>Al atender la solicitud.</td>
                         </tr>
                         <tr>
-                            <td><strong>Copias de seguridad automatizadas</strong><br>(Backups cifrados de infraestructura en MongoDB Atlas / GCP)</td>
-                            <td>Bloqueados e inaccesibles hasta su sobrescritura automática.</td>
-                            <td>Máximo <strong>30 días naturales</strong>.</td>
+                            <td><strong>Copias técnicas de infraestructura</strong></td>
+                            <td>No se mantiene un historial comercial de datos de usuario; la configuración de recuperación depende de AWS.</td>
+                            <td>No se publica un plazo único ni se prometen purgas automáticas no verificadas.</td>
                         </tr>
                     </tbody>
                 </table>
-                <p>Nexum no conserva registros financieros ni perfiles personales de cuentas eliminadas con fines comerciales o publicitarios.</p>
+                <p>Nexum no conserva registros financieros ni perfiles personales de cuentas eliminadas con fines comerciales o publicitarios. La eliminación se ejecuta conforme al procedimiento aplicable y se confirma por el correo de privacidad.</p>
             </section>
         </main>
 

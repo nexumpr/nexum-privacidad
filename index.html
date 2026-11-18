@@ -284,11 +284,11 @@
             <div class="meta-grid">
                 <div class="meta-item">
                     <span>Identificador de Versión</span>
-                    <strong>2026-11-v1</strong>
+                    <strong>2026-11-v2</strong>
                 </div>
                 <div class="meta-item">
                     <span>Publicación y Entrada en Vigor</span>
-                    <strong>02 de noviembre de 2026</strong>
+                    <strong>18 de noviembre de 2026</strong>
                 </div>
                 <div class="meta-item">
                     <span>Ámbito de Aplicación</span>
@@ -300,7 +300,7 @@
         <main class="doc-content">
             <section id="identidad">
                 <h2><span class="sec-num">1.</span> Identidad y Domicilio del Responsable</h2>
-                <p>El proyecto <strong>Nexum</strong> (en adelante, <em>"Nexum"</em>, <em>"nosotros"</em> o <em>"el Responsable"</em>), con domicilio de operación técnica y digital en los Estados Unidos Mexicanos, es el responsable del uso, tratamiento, custodia y protección de sus datos personales. Ponemos a su disposición el presente Aviso de Privacidad a fin de garantizar el tratamiento legítimo, controlado e informado de sus datos, en cumplimiento de los principios de licitud, consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad.</p>
+                <p>El responsable del tratamiento es <strong>Leonardo Isaac Barrera Tejeda</strong>, con domicilio en Carretera Tula Tepeji 7, Localidad El Sesenta y Dos, C.P. 42836, Tula de Allende, Hidalgo, México. Para asuntos de privacidad y derechos ARCO puede contactarse el correo <a href="mailto:nexumproyectomov@gmail.com">nexumproyectomov@gmail.com</a>. Ponemos a su disposición el presente Aviso de Privacidad para garantizar el tratamiento legítimo, controlado e informado de sus datos.</p>
             </section>
 
             <section id="naturaleza">
@@ -369,8 +369,8 @@
                 <h2><span class="sec-num">5.</span> Tratamiento de Permisos Sensibles del Dispositivo</h2>
                 <p>Nexum respeta estrictamente el principio de mínimo privilegio en el entorno Android:</p>
                 <ul>
-                    <li><strong>Permiso de Micrófono (<span class="ui-path">RECORD_AUDIO</span>):</strong> Si utiliza la función opcional de registro de gastos por voz, la captura de audio se procesa a nivel nativo del sistema operativo mediante el motor de reconocimiento del dispositivo (<em>Android Speech Recognizer</em>). Nexum interpreta únicamente el texto resultante para precargar el concepto, monto y categoría en un borrador visual que requiere su confirmación manual. <strong>Nexum no graba, no transmite ni almacena archivos de audio en servidores remotos.</strong> Si usted niega este permiso, la aplicación mantiene el 100% de su funcionalidad a través del registro manual.</li>
-                    <li><strong>Permiso de Notificaciones (<span class="ui-path">POST_NOTIFICATIONS</span>):</strong> Requerido únicamente para desplegar recordatorios de pago o presupuesto. Si es rechazado, la aplicación no desplegará notificaciones en segundo plano, pero conservará su historial dentro de la interfaz.</li>
+                    <li><strong>Permiso de Micrófono (<span class="ui-path">RECORD_AUDIO</span>):</strong> El registro por voz aún no está disponible. Cuando se habilite, el reconocimiento se realizará en el dispositivo y el backend no almacenará audio; la función será opcional y no será requisito para usar la aplicación.</li>
+                    <li><strong>Permiso de Notificaciones (<span class="ui-path">POST_NOTIFICATIONS</span>):</strong> Las notificaciones push aún no están disponibles. Cuando se habiliten, serán opcionales y podrán rechazarse sin afectar el resto de funciones disponibles.</li>
                 </ul>
             </section>
 
@@ -379,8 +379,9 @@
                 <p><strong>Nexum NO comercializa, vende, arrienda, cede ni transfiere sus datos personales a terceros comerciales, despachos publicitarios ni redes de monetización de datos.</strong></p>
                 <p>Sus datos son procesados mediante proveedores de servicios tecnológicos bajo la figura de Encargados del Tratamiento, quienes operan con estrictos estándares de confidencialidad y acuerdos de protección de datos:</p>
                 <ul>
-                    <li><strong>Infraestructura de Cómputo y Servidores:</strong> Google Cloud Platform (GCP).</li>
-                    <li><strong>Base de Datos y Almacenamiento Persistente:</strong> MongoDB Atlas (con cifrado de extremo a extremo en tránsito y en reposo).</li>
+                    <li><strong>Infraestructura de Cómputo y Servidores:</strong> Amazon Web Services (AWS), región us-east-2.</li>
+                    <li><strong>Base de Datos y Almacenamiento Persistente:</strong> Amazon DynamoDB, con cifrado en reposo configurado en el servicio; Amazon S3 para artefactos y estado de infraestructura.</li>
+                    <li><strong>Caché y control de cuotas:</strong> Amazon ElastiCache for Redis, con TLS.</li>
                 </ul>
                 <p>Dichos proveedores únicamente procesan la información por instrucción técnica de Nexum para alojar la API y la base de datos de manera resiliente.</p>
             </section>
@@ -389,7 +390,7 @@
                 <h2><span class="sec-num">7.</span> Medidas de Seguridad Físicas, Técnicas y Administrativas</h2>
                 <p>Para proteger sus datos contra daño, pérdida, alteración, destrucción o uso no autorizado, Nexum implementa los siguientes controles técnicos de seguridad (<em>Security by Design</em>):</p>
                 <ul>
-                    <li><strong>Cifrado en Tránsito:</strong> Todas las comunicaciones entre la aplicación móvil y el backend se realizan bajo el protocolo seguro HTTPS con TLS 1.3.</li>
+                    <li><strong>Cifrado en Tránsito:</strong> Las comunicaciones entre la aplicación móvil y el backend se realizan mediante HTTPS. No se afirma una versión concreta de TLS más allá de la configuración del servicio.</li>
                     <li><strong>Cero Contraseñas en Texto Claro:</strong> Las credenciales se procesan mediante funciones de derivación segura de contraseñas con el algoritmo robusto Argon2id.</li>
                     <li><strong>Gestión Segura de Sesiones:</strong> Empleo de tokens de acceso (JWT) de ciclo de vida corto y <em>refresh tokens</em> rotativos con detección inmediata de reutilización ilegítima.</li>
                     <li><strong>Almacenamiento Local Seguro:</strong> Las credenciales y claves criptográficas locales se resguardan en almacenes seguros del sistema operativo Android (<em>Android Keystore / EncryptedSharedPreferences</em>).</li>
@@ -403,27 +404,28 @@
                 <ul>
                     <li><strong>Acceso:</strong> Usted puede consultar sus datos de identidad, historial de movimientos, presupuestos y metas directamente en la aplicación a través de las pantallas de <span class="ui-path">Perfil</span>, <span class="ui-path">Movimientos</span> e <span class="ui-path">Inicio</span>.</li>
                     <li><strong>Rectificación:</strong> Puede modificar o corregir en cualquier momento sus datos de perfil (nombre), actualizar su ingreso habitual, o editar los importes, categorías y conceptos de gastos ya registrados.</li>
-                    <li><strong>Cancelación (Eliminación):</strong> Puede solicitar la supresión total de sus datos personales y el cierre de su cuenta mediante la opción <span class="ui-path">Perfil &gt; Eliminar cuenta</span> (véase la Sección 9).</li>
+                    <li><strong>Cancelación (Eliminación):</strong> Puede solicitar la supresión de su cuenta y datos escribiendo a <a href="mailto:nexumproyectomov@gmail.com">nexumproyectomov@gmail.com</a>. La eliminación automática desde la app aún no está disponible (véase la Sección 9).</li>
                     <li><strong>Oposición / Revocación del Consentimiento:</strong> Puede oponerse al tratamiento de finalidades secundarias mediante los interruptores de notificaciones y la revocación de consentimientos en <span class="ui-path">Perfil &gt; Privacidad &gt; Historial de consentimientos</span>.</li>
-                    <li><strong>Portabilidad de Datos:</strong> Conforme a las mejores prácticas de gobernanza de datos y al contrato de servicio de Nexum, usted puede solicitar una copia estructurada, completa y legible por máquina de sus datos personales (perfil, movimientos, presupuestos y metas) en formatos estándar <strong>JSON</strong> o <strong>CSV</strong>, accediendo a <span class="ui-path">Perfil &gt; Privacidad &gt; Exportar mis datos</span>.</li>
+                    <li><strong>Portabilidad de Datos:</strong> La exportación automática aún no está disponible. Puede solicitar una copia de sus datos por el correo de privacidad; se atenderá conforme al procedimiento aplicable.</li>
                 </ul>
             </section>
 
             <section id="eliminacion">
-                <h2><span class="sec-num">9.</span> Mecanismo de Eliminación Definitiva de Cuenta</h2>
-                <p>En cumplimiento de las directrices de privacidad de aplicaciones y el derecho a la cancelación de datos:</p>
+                <h2><span class="sec-num">9.</span> Mecanismo de Eliminación de Cuenta</h2>
+                <p>La eliminación automática desde la aplicación aún no está disponible (E014 está pendiente de implementación). Mientras tanto, el titular puede solicitar la eliminación de su cuenta y de los datos asociados escribiendo a <a href="mailto:nexumproyectomov@gmail.com">nexumproyectomov@gmail.com</a>.</p>
                 <ul>
-                    <li>La aplicación proporciona un flujo directo y explícito para la eliminación de cuenta en <span class="ui-path">Perfil &gt; Eliminar cuenta</span>.</li>
-                    <li>Por motivos de seguridad contra manipulaciones no autorizadas, el proceso exige reautenticación mediante el reingreso de su contraseña actual y la confirmación explícita escribiendo la palabra <strong>ELIMINAR</strong>.</li>
-                    <li><strong>Alcance del Borrado:</strong> Una vez confirmada la solicitud, el servidor ejecuta la revocación inmediata de todas las sesiones activas, la anulación de tokens de notificación push y la supresión/anonimización definitiva de su perfil y de todos los registros financieros, metas, movimientos y presupuestos vinculados.</li>
+                    <li>La solicitud debe enviarse desde el correo registrado o incluir información suficiente para verificar la titularidad.</li>
+                    <li>El responsable verificará la identidad, revocará las sesiones activas y ejecutará el procedimiento de supresión aplicable.</li>
+                    <li>Los datos no se consideran eliminados hasta que el responsable confirme la ejecución. No se promete una purga automática que no esté verificada.</li>
                 </ul>
             </section>
 
             <section id="retencion">
-                <h2><span class="sec-num">10.</span> Plazos de Conservación y Retención de Datos</h2>
+                <h2><span class="sec-num">10.</span> Conservación y Retención de Datos</h2>
                 <ul>
-                    <li><strong>Datos Activos:</strong> Se conservan mientras la cuenta de usuario se mantenga activa y con el consentimiento vigente.</li>
-                    <li><strong>Cuentas Inactivas o Eliminadas:</strong> Al consumarse la eliminación de la cuenta, los datos son borrados de los entornos productivos de forma inmediata. Las copias de seguridad históricas (<em>backups</em> automatizados de infraestructura) sobrescriben y purgan los bloques de datos en un plazo no mayor a <strong>30 días naturales</strong>, periodo durante el cual la información permanece bloqueada e inaccesible para operaciones normales.</li>
+                    <li><strong>Datos Activos:</strong> Se conservan mientras la cuenta esté activa y sean necesarios para las finalidades descritas y las obligaciones aplicables.</li>
+                    <li><strong>Eliminación:</strong> Al solicitar la eliminación, se revocan las sesiones y se ejecuta el procedimiento de supresión aplicable. Los datos no se consideran eliminados hasta que el responsable confirme la ejecución.</li>
+                    <li><strong>Copias técnicas:</strong> No se mantiene un historial comercial de datos de usuario. La configuración de recuperación de la base de datos y los registros operativos se define en la operación de AWS; no se publica un plazo único ni se prometen purgas automáticas no verificadas.</li>
                 </ul>
             </section>
 
@@ -441,7 +443,7 @@
                 <h2><span class="sec-num">12.</span> Versionamiento y Modificaciones al Aviso de Privacidad</h2>
                 <p>Nexum se reserva el derecho de actualizar el presente Aviso de Privacidad para reflejar cambios legales, normativos, mejoras arquitectónicas o nuevas características en la plataforma.</p>
                 <ul>
-                    <li><strong>Consentimiento Versionado:</strong> Cada versión del aviso cuenta con un identificador unívoco (por ejemplo, <span class="ui-path">2026-11-v1</span>).</li>
+                    <li><strong>Consentimiento Versionado:</strong> Cada versión del aviso cuenta con un identificador unívoco (por ejemplo, <span class="ui-path">2026-11-v2</span>).</li>
                     <li><strong>Notificación de Cambios:</strong> Cuando se publique una versión sustancialmente nueva, la aplicación presentará una solicitud de revisión y aceptación expresa al iniciar sesión o ingresar a la plataforma, registrando la fecha y versión aceptada de forma auditable.</li>
                     <li>La versión vigente y el historial de aceptaciones de su cuenta siempre pueden ser consultados en <span class="ui-path">Perfil &gt; Privacidad &gt; Aviso de privacidad</span> e <span class="ui-path">Historial de consentimientos</span>.</li>
                 </ul>
@@ -454,7 +456,7 @@
                 <div class="contact-card">
                     <div>
                         <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Correo Electrónico de Privacidad</div>
-                        <a href="mailto:privacidad@nexum.mx">privacidadNexum@gmail.com</a>
+                        <a href="mailto:nexumproyectomov@gmail.com">nexumproyectomov@gmail.com</a>
                     </div>
                     <div style="font-size: 0.875rem; color: var(--text-muted);">
                         O vía soporte interno en <span class="ui-path">Ayuda</span> dentro de la app
